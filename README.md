@@ -12,6 +12,10 @@ This project is part of my preparation for **Google Summer of Code 2026**.
   - Loads a custom spaceship image.
   - Positions the ship at the bottom-center of the screen.
   - Renders the ship using the `blitme()` method.
+- **Bullet Firing System**: (NEW!)
+  - Press spacebar to shoot bullets upward.
+  - Bullets are drawn on screen and move continuously.
+  - Uses `pygame.sprite.Sprite` for efficient handling.
 
 ---
 
@@ -26,9 +30,8 @@ This project is part of my preparation for **Google Summer of Code 2026**.
 
 ## 🔜 Upcoming Features
 
-- Bullet firing system  
 - Alien fleet generation  
-- Collision detection  
+- Bullet-alien collision detection  
 - Scoring system & levels  
 - Sound effects and animations  
 
@@ -55,15 +58,14 @@ This project is part of my preparation for **Google Summer of Code 2026**.
 ---
 
 ## 📁 Project Structure (so far)
-```
 alien-invasion/
 ├── images/
-│   └── ship.bmp
+│ └── ship.bmp
 ├── alien_invasion.py
 ├── ship.py
+├── bullet.py # NEW
 ├── settings.py
 └── README.md
-```
 
 ---
 
