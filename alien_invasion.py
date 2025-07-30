@@ -78,6 +78,17 @@ class AlienInvasion:
 		alien = Alien(self)
 		self.aliens.add(alien)
 
+		# Determining How Many Aliens Fit in a Row
+		alien_width = alien.rect.width
+		avl_space_x = self.settings.screen_width - (2 * alien_width)
+		n_aliens_x = avl_space_x // (2 * alien_width)
+
+		# Creating the first row of aliens.
+		for alien_n in range(n_aliens_x):
+			alien = Alien(self)
+			alien.rect.x = alien_width + 2 * alien_width * alien_n
+			self.aliens.add(alien)
+
 	def _update_screen(self):
 		"""Update images on the screen, and flip to the new screen."""
 		self.screen.fill(self.settings.bg_color)
