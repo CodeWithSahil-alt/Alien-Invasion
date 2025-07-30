@@ -85,9 +85,13 @@ class AlienInvasion:
 
 		# Creating the first row of aliens.
 		for alien_n in range(n_aliens_x):
-			alien = Alien(self)
-			alien.rect.x = alien_width + 2 * alien_width * alien_n
-			self.aliens.add(alien)
+			self._create_alien(alien_n, alien_width)
+
+	def _create_alien(self, alien_n, alien_width):
+		"""Create an alien and place it in the row."""
+		alien = Alien(self)
+		alien.rect.x = alien_width + 2 * alien_width * alien_n
+		self.aliens.add(alien)
 
 	def _update_screen(self):
 		"""Update images on the screen, and flip to the new screen."""
