@@ -1,21 +1,33 @@
 # 👾 Alien Invasion (Pygame Project)
 
-A beginner-friendly 2D space shooter game built with **Python** and **Pygame**, following the "Python Crash Course" by Eric Matthes.  
+A beginner-friendly 2D space shooter game built with **Python** and **Pygame**, following the "*Python Crash Course*" by *Eric Matthes*.  
 This project is part of my preparation for **Google Summer of Code 2026**.
 
 ---
 
 ## 🚀 Current Features
 
-- **Game Window Initialized**: 1200x700 screen created using Pygame.
-- **Ship Class Added**:
+### ✅ Game Window Initialized
+- 1200x755 screen created using `pygame.display.set_mode()`
+- Game loop running with proper event handling (`QUIT`)
+
+### ✅ Ship Class Added
   - Loads a custom spaceship image.
   - Positions the ship at the bottom-center of the screen.
   - Renders the ship using the `blitme()` method.
-- **Bullet Firing System**: (NEW!)
+  - Structured in a separate `Ship` class
+  
+### ✅ Bullet Firing System
   - Press spacebar to shoot bullets upward.
   - Bullets are drawn on screen and move continuously.
   - Uses `pygame.sprite.Sprite` for efficient handling.
+  - Implemented using a `Bullet` class
+
+### ✅ Alien Fleet Generation (NEW!)
+- Created `Alien` class using `pygame.sprite.Sprite`
+- Calculated number of aliens per row dynamically
+- Aliens drawn in a fleet at the top of the screen
+- Foundation laid for future logic (movement, collision, scoring)
 
 ---
 
@@ -29,10 +41,11 @@ This project is part of my preparation for **Google Summer of Code 2026**.
 ---
 
 ## 🔜 Upcoming Features
-
-- Alien fleet generation  
-- Bullet-alien collision detection  
-- Scoring system & levels  
+ 
+- Add alien fleet movement (horizontal + drop down)
+- Bullet-alien collision detection
+- Scoring system & levels
+- Add game over condition 
 - Sound effects and animations  
 
 ---
@@ -57,15 +70,36 @@ This project is part of my preparation for **Google Summer of Code 2026**.
 
 ---
 
+## 🎮 Controls
+
+- **Left / Right Arrows** — Move ship horizontally
+- **Spacebar** — Fire bullets
+- **X / Close** — Quit the game
+
+---
+
+
 ## 📁 Project Structure (so far)
-alien-invasion/
-├── images/
-│ └── ship.bmp
-├── alien_invasion.py
-├── ship.py
-├── bullet.py # NEW
-├── settings.py
+alien-invasion/  
+├── images/  
+│ └── ship.bmp  
+├── alien_invasion.py  
+├── ship.py  
+├── alien.py # NEW  
+├── settings.py  
 └── README.md
+
+---
+
+### 🤝 Contribution
+This is a solo learning project for now. If you're reading this and want to give feedback or suggestions — feel free!
+
+---
+
+### 📚 Credits
+
+- [Python Crash Course by Eric Matthes](https://nostarch.com/pythoncrashcourse2e)
+- [Pygame Documentation](https://www.pygame.org/docs/)
 
 ---
 
