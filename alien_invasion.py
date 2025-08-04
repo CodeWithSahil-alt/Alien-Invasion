@@ -7,6 +7,7 @@ import pygame
 from settings import Settings
 from ship import Ship
 from bullet import Bullet
+from alien import Alien
 
 class AlienInvasion:
 	"""Overall class to manage game assets and behavior."""
@@ -19,6 +20,9 @@ class AlienInvasion:
 		pygame.display.set_caption("Alien Invasion")
 		self.ship = Ship(self)
 		self.bullets = pygame.sprite.Group()
+		self.aliens = pygame.sprite.Group()
+
+		self._create_fleet()
 
 	def run_game(self):
 		"""Start the main loop for the game."""
@@ -69,12 +73,40 @@ class AlienInvasion:
 			if bullet.rect.bottom <= 0:
 				self.bullets.remove(bullet)
 
+	def _create_fleet(self):
+		"""Create the fleet of aliens."""
+		alien = Alien(self)
+		self.aliens.add(alien)
+
+		# Determining How Many Aliens Fit in a Row
+		alien_width, alien_height = alien.rect.size
+		avl_space_x = self.settings.screen_width - (2 * alien_width)
+		n_aliens_x = avl_space_x // (2 * alien_width)
+
+		# Determining the number of the rows that fit on the screen.
+		ship_height = self.ship.rect.height
+		avl_space_y = (self.settings.screen_height- (3 * alien_height) - ship_height)
+		n_rows = avl_space_y // (2 * alien_height)
+
+		# Creating the full fleet of aliens.
+		for row_n in range(n_rows):
+			for alien_n in range(n_aliens_x):
+				self._create_alien(alien_n, row_n)
+
+	def _create_alien(self, alien_n, row_n):
+		"""Create an alien and place it in the row."""
+		alien = Alien(self)
+		alien.rect.x = alien.rect.width + 2 * alien.rect.width * alien_n
+		alien.rect.y = alien.rect.height + (2 * alien.rect.height * row_n)
+		self.aliens.add(alien)
+
 	def _update_screen(self):
 		"""Update images on the screen, and flip to the new screen."""
 		self.screen.fill(self.settings.bg_color)
 		self.ship.blitme()
 		for bullet in self.bullets.sprites():
 			bullet.draw_bullet()
+		self.aliens.draw(self.screen)
 
 		pygame.display.flip()
 
