@@ -16,12 +16,12 @@ class AlienInvasion:
 		"""Initialize the game, and create game resources."""
 		pygame.init()
 		self.settings = Settings()
-		self.screen = pygame.display.set_mode((self.settings.screen_width, self.settings.screen_height))
+		self.screen = pygame.display.set_mode(
+			(self.settings.screen_width, self.settings.screen_height))
 		pygame.display.set_caption("Alien Invasion")
 		self.ship = Ship(self)
 		self.bullets = pygame.sprite.Group()
 		self.aliens = pygame.sprite.Group()
-
 		self._create_fleet()
 
 	def run_game(self):
@@ -30,6 +30,7 @@ class AlienInvasion:
 			self._check_events()
 			self.ship.update()
 			self._update_bullets()
+			self._update_aliens()
 			self._update_screen()
 
 	def _check_events(self):
@@ -38,11 +39,11 @@ class AlienInvasion:
 			if event.type == pygame.QUIT:
 				sys.exit()
 			elif event.type == pygame.KEYDOWN:
-				self._check_keydown_events(event)
+				self._keydown_events(event)
 			elif event.type == pygame.KEYUP:
-				self._check_keyup_events(event)
+				self._keyup_events(event)
 
-	def _check_keydown_events(self, event):
+	def _keydown_events(self, event):
 		"""Handle keypresses."""
 		if event.key == pygame.K_RIGHT:
 			self.ship.moving_right = True
@@ -53,7 +54,7 @@ class AlienInvasion:
 		elif event.key ==pygame.K_SPACE:
 			self._fire_bullet()
 
-	def _check_keyup_events(self, event):
+	def _keyup_events(self, event):
 		"""Handale key releases."""
 		if event.key == pygame.K_RIGHT:
 			self.ship.moving_right = False
@@ -98,7 +99,13 @@ class AlienInvasion:
 		alien = Alien(self)
 		alien.rect.x = alien.rect.width + 2 * alien.rect.width * alien_n
 		alien.rect.y = alien.rect.height + (2 * alien.rect.height * row_n)
+		alien.x = float(alien.rect.x)
+		alien.rect.x = alien.x
 		self.aliens.add(alien)
+
+	def _update_aliens(self):
+		"""Update theb position of all aliens in the fleet."""
+		self.aliens.update()
 
 	def _update_screen(self):
 		"""Update images on the screen, and flip to the new screen."""
