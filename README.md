@@ -29,11 +29,17 @@ This project is part of my preparation for **Google Summer of Code 2026**.
 - Aliens drawn in a fleet at the top of the screen
 - Foundation laid for future logic (movement, collision, scoring)
 
-### ✅ Alien Fleet Movement (NEW!)
+### ✅ Alien Fleet Movement
 - Aliens now move horizontally as a fleet
 - When a fleet hits the screen edge, it drops down and reverses direction
 - Controlled using `check_edges()` in each alien and centralized `fleet_direction` in `Settings`
 - Prepares the game for bullet-alien collisions and end conditions
+
+### ✅ Bullet-Alien Collision Detection (NEW!)
+- Bullets now detect and destroy aliens on contact
+- Uses `pygame.sprite.groupcollide()` to efficiently manage collisions
+- Entire fleet regenerates after all aliens are destroyed
+- Sets the stage for scoring, levels, and win conditions
 
 ---
 
@@ -79,21 +85,23 @@ This project is part of my preparation for **Google Summer of Code 2026**.
 
 - **Left / Right Arrows** — Move ship horizontally
 - **Spacebar** — Fire bullets
-- **X / Close** — Quit the game
+- **Q / Close** — Quit the game
 
 ---
 
 
 ## 📁 Project Structure (so far)
-alien-invasion/  
-├── images/  
-│ └── ship.bmp  
-├── alien_invasion.py  
-├── ship.py  
-├── alien.py # NEW  
-├── settings.py  
+```
+alien-invasion/
+├── images/
+│    ├──ship.bmp
+│    └──alien.bmp
+├── alien_invasion.py 
+├── ship.py
+├── alien.py # NEW
+├── settings.py
 └── README.md
-
+```
 ---
 
 ### 🤝 Contribution
