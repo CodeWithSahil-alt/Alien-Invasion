@@ -23,11 +23,17 @@ This project is part of my preparation for **Google Summer of Code 2026**.
   - Uses `pygame.sprite.Sprite` for efficient handling.
   - Implemented using a `Bullet` class
 
-### ✅ Alien Fleet Generation (NEW!)
+### ✅ Alien Fleet Generation
 - Created `Alien` class using `pygame.sprite.Sprite`
 - Calculated number of aliens per row dynamically
 - Aliens drawn in a fleet at the top of the screen
 - Foundation laid for future logic (movement, collision, scoring)
+
+### ✅ Alien Fleet Movement (NEW!)
+- Aliens now move horizontally as a fleet
+- When a fleet hits the screen edge, it drops down and reverses direction
+- Controlled using `check_edges()` in each alien and centralized `fleet_direction` in `Settings`
+- Prepares the game for bullet-alien collisions and end conditions
 
 ---
 
@@ -41,8 +47,7 @@ This project is part of my preparation for **Google Summer of Code 2026**.
 ---
 
 ## 🔜 Upcoming Features
- 
-- Add alien fleet movement (horizontal + drop down)
+
 - Bullet-alien collision detection
 - Scoring system & levels
 - Add game over condition 
