@@ -35,11 +35,16 @@ This project is part of my preparation for **Google Summer of Code 2026**.
 - Controlled using `check_edges()` in each alien and centralized `fleet_direction` in `Settings`
 - Prepares the game for bullet-alien collisions and end conditions
 
-### ✅ Bullet-Alien Collision Detection (NEW!)
+### ✅ Bullet-Alien Collision Detection
 - Bullets now detect and destroy aliens on contact
 - Uses `pygame.sprite.groupcollide()` to efficiently manage collisions
 - Entire fleet regenerates after all aliens are destroyed
 - Sets the stage for scoring, levels, and win conditions
+
+### ✅ Game Over & Lives System (NEW!)
+- Tracks remaining ships using `GameStats`
+- Game ends when all ships are lost
+- Ships repositioned after being hit, with a short pause before play resumes
 
 ---
 
@@ -54,9 +59,8 @@ This project is part of my preparation for **Google Summer of Code 2026**.
 
 ## 🔜 Upcoming Features
 
-- Bullet-alien collision detection
 - Scoring system & levels
-- Add game over condition 
+- Start/restart game functionality 
 - Sound effects and animations  
 
 ---
@@ -98,8 +102,9 @@ alien-invasion/
 │    └──alien.bmp
 ├── alien_invasion.py 
 ├── ship.py
-├── alien.py # NEW
+├── alien.py
 ├── settings.py
+├──game_stats.py 
 └── README.md
 ```
 ---
