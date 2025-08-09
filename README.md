@@ -27,10 +27,10 @@ This project is part of my preparation for **Google Summer of Code 2026**.
 - Created `Alien` class using `pygame.sprite.Sprite`
 - Calculated number of aliens per row dynamically
 - Aliens drawn in a fleet at the top of the screen
-- Foundation laid for future logic (movement, collision, scoring)
+- Spawns a full alien fleet at the top of the screen.
 
 ### ✅ Alien Fleet Movement
-- Aliens now move horizontally as a fleet
+- Aliens move horizontally as a fleet
 - When a fleet hits the screen edge, it drops down and reverses direction
 - Controlled using `check_edges()` in each alien and centralized `fleet_direction` in `Settings`
 - Prepares the game for bullet-alien collisions and end conditions
@@ -41,10 +41,15 @@ This project is part of my preparation for **Google Summer of Code 2026**.
 - Entire fleet regenerates after all aliens are destroyed
 - Sets the stage for scoring, levels, and win conditions
 
-### ✅ Game Over & Lives System (NEW!)
+### ✅ Game Over & Lives System
 - Tracks remaining ships using `GameStats`
-- Game ends when all ships are lost
+- Game ends when all lives are lost
 - Ships repositioned after being hit, with a short pause before play resumes
+
+### 🆕 Play Button (NEW!)
+- Interactive Play Button to start or restart the game.
+- Hides the mouse cursor during gameplay for immersion.
+- Click to reset stats, recreate fleet, and center the ship.
 
 ---
 
@@ -60,8 +65,8 @@ This project is part of my preparation for **Google Summer of Code 2026**.
 ## 🔜 Upcoming Features
 
 - Scoring system & levels
-- Start/restart game functionality 
-- Sound effects and animations  
+- Sound effects and animations
+- More power-ups and alien types
 
 ---
 
@@ -90,6 +95,7 @@ This project is part of my preparation for **Google Summer of Code 2026**.
 - **Left / Right Arrows** — Move ship horizontally
 - **Spacebar** — Fire bullets
 - **Q / Close** — Quit the game
+- **Mouse Click** — Start / restart game from Play button
 
 ---
 
@@ -100,11 +106,13 @@ alien-invasion/
 ├── images/
 │    ├──ship.bmp
 │    └──alien.bmp
-├── alien_invasion.py 
+├── alien_invasion.py
 ├── ship.py
 ├── alien.py
+├── bullet.py
 ├── settings.py
-├──game_stats.py 
+├──game_stats.py
+├── button.py
 └── README.md
 ```
 ---
